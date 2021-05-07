@@ -60,6 +60,9 @@ public class QuestionManager {
         return currentQuestion;
     }
 
+    public int getQuestionNumber(){return answeredQuestionsList.size();}
+    public int getTotalQuestions(){return questionList.size();}
+
     private Question getRandomQuestion() {
         if(answeredQuestionsList.size() == questionList.size()){
             return  new Question(0,"");
@@ -70,6 +73,10 @@ public class QuestionManager {
         }
         answeredQuestionsList.add(randomIndex);
         return  questionList.get(randomIndex);
+    }
+
+    public void resetAnsweredQuestions(){
+        answeredQuestionsList.clear();
     }
 
     public List<String> returnAnswersList(Question question){
