@@ -10,12 +10,12 @@ public class QuestionManager {
     private Question currentQuestion;
     private List<Question> questionList;
     private List<Integer> answeredQuestionsList;
-    private Random random;
+    private Random random1;
 
     public void initialize() {
         questionList = new ArrayList<>();
         answeredQuestionsList = new ArrayList<>();
-        random = new Random();
+        random1 = new Random();
         addQuestion(new Question(R.drawable.nike,"Nike"));
         addQuestion(new Question(R.drawable.adidas,"Adidas"));
         addQuestion(new Question(R.drawable.pepsi,"Pepsi"));
@@ -64,9 +64,9 @@ public class QuestionManager {
         if(answeredQuestionsList.size() == questionList.size()){
             return  new Question(0,"");
         }
-        Integer randomIndex = random.nextInt(questionList.size());
+        Integer randomIndex = random1.nextInt(questionList.size());
         while (answeredQuestionsList.contains(randomIndex)) {
-            randomIndex = random.nextInt(questionList.size());
+            randomIndex = random1.nextInt(questionList.size());
         }
         answeredQuestionsList.add(randomIndex);
         return  questionList.get(randomIndex);
@@ -75,16 +75,17 @@ public class QuestionManager {
     public List<String> returnAnswersList(Question question){
         int numberOfElements = 4;
         List<String> finalAnswersList = new ArrayList<>();
+        Random random2 = new Random();
         for (int i = 0; i < numberOfElements; i++) {
             int randomIndex;
-            Question randomQuestion;
+            String randomAnswer;
             do {
-                randomIndex = random.nextInt(questionList.size());
-                randomQuestion = questionList.get(randomIndex);
-            }while(randomQuestion.getLogoAnswer().equals(question.getLogoAnswer()));
-            finalAnswersList.add(randomQuestion.getLogoAnswer());
+                randomIndex = random2.nextInt(questionList.size());
+                randomAnswer = questionList.get(randomIndex).getLogoAnswer();
+            }while(randomAnswer.equals(question.getLogoAnswer()) || finalAnswersList.contains(randomAnswer));
+            finalAnswersList.add(randomAnswer);
         }
-        int randomIndex = random.nextInt(finalAnswersList.size());
+        int randomIndex = random2.nextInt(finalAnswersList.size());
         finalAnswersList.set(randomIndex,question.getLogoAnswer());
         return finalAnswersList;
     }
