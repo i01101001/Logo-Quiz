@@ -21,6 +21,9 @@ public class MainActivity extends AppCompatActivity {
         bindButtons();
     }
     private void displayQuestion(Question question){
+        if(question.getLogoAnswer().equals("")){
+            return;
+        }
         ImageView logoDisplay = findViewById(R.id.logoDisplay);
         Button answer1 = findViewById(R.id.answer1);
         Button answer2 = findViewById(R.id.answer2);
