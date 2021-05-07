@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         Button answer4 = findViewById(R.id.answer4);
         TextView titleView = findViewById(R.id.titleView);
         if(question.getLogoAnswer().equals("")){
-            titleView.setText("You've answered all Questions!");
+            titleView.setText(" You've answered all Questions! ");
             logoDisplay.setVisibility(View.GONE);
             answer1.setVisibility(View.GONE);
             answer2.setVisibility(View.GONE);
@@ -50,16 +50,16 @@ public class MainActivity extends AppCompatActivity {
         answer2.setText(answersList.get(1));
         answer3.setText(answersList.get(2));
         answer4.setText(answersList.get(3));
-        String titleText = String.format("Question #%d/%d",QuestionManager.instance.getQuestionNumber(),QuestionManager.instance.getTotalQuestions());
+        String titleText = String.format(" Question #%d/%d ",QuestionManager.instance.getQuestionNumber(),QuestionManager.instance.getTotalQuestions());
         titleView.setText(titleText);
     }
     private void onButtonClick(Button button){
         if(QuestionManager.instance.isAnswerCorrect(button.getText().toString())){
             animateTitleText();
             animateLogoDisplay();
-            animatePopupText("CORRECT",true);
+            animatePopupText(" CORRECT ",true);
         } else{
-            animatePopupText("WRONG",false);
+            animatePopupText(" WRONG ",false);
         }
     }
     private void bindButtons(){
