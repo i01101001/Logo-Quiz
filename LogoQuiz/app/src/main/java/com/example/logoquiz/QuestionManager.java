@@ -25,27 +25,27 @@ public class QuestionManager {
         addQuestion(new Question(R.drawable.playstation,"Playstation"));
         addQuestion(new Question(R.drawable.xbox,"Xbox"));
         addQuestion(new Question(R.drawable.gucci,"Gucci"));
-//        addQuestion(new Question(R.drawable.nike,"Nike"));
-//        addQuestion(new Question(R.drawable.nike,"Nike"));
-//        addQuestion(new Question(R.drawable.nike,"Nike"));
-//        addQuestion(new Question(R.drawable.nike,"Nike"));
-//        addQuestion(new Question(R.drawable.nike,"Nike"));
-//        addQuestion(new Question(R.drawable.nike,"Nike"));
-//        addQuestion(new Question(R.drawable.nike,"Nike"));
-//        addQuestion(new Question(R.drawable.nike,"Nike"));
-//        addQuestion(new Question(R.drawable.nike,"Nike"));
-//        addQuestion(new Question(R.drawable.nike,"Nike"));
-//        addQuestion(new Question(R.drawable.nike,"Nike"));
-//        addQuestion(new Question(R.drawable.nike,"Nike"));
-//        addQuestion(new Question(R.drawable.nike,"Nike"));
-//        addQuestion(new Question(R.drawable.nike,"Nike"));
-//        addQuestion(new Question(R.drawable.nike,"Nike"));
-//        addQuestion(new Question(R.drawable.nike,"Nike"));
-//        addQuestion(new Question(R.drawable.nike,"Nike"));
-//        addQuestion(new Question(R.drawable.nike,"Nike"));
-//        addQuestion(new Question(R.drawable.nike,"Nike"));
-//        addQuestion(new Question(R.drawable.nike,"Nike"));
-//        addQuestion(new Question(R.drawable.nike,"Nike"));
+        addQuestion(new Question(R.drawable.ferrari,"Ferrari"));
+        addQuestion(new Question(R.drawable.audi,"Audi"));
+        addQuestion(new Question(R.drawable.tesla,"Tesla"));
+        addQuestion(new Question(R.drawable.mercedes,"Mercedes"));
+        addQuestion(new Question(R.drawable.mcdo,"McDonalds"));
+        addQuestion(new Question(R.drawable.unilever,"Unilever"));
+        addQuestion(new Question(R.drawable.nestle,"Nestle"));
+        addQuestion(new Question(R.drawable.hnm,"H&M"));
+        addQuestion(new Question(R.drawable.uniqlo,"Uniqlo"));
+        addQuestion(new Question(R.drawable.lacoste,"Lacoste"));
+        addQuestion(new Question(R.drawable.ck,"Calvin Klein"));
+        addQuestion(new Question(R.drawable.lg,"LG"));
+        addQuestion(new Question(R.drawable.foodpanda,"FoodPanda"));
+        addQuestion(new Question(R.drawable.sanmig,"San Miguel"));
+        addQuestion(new Question(R.drawable.surf,"Surf"));
+        addQuestion(new Question(R.drawable.sswan,"Silver Swan"));
+        addQuestion(new Question(R.drawable.knorr,"Knorr"));
+        addQuestion(new Question(R.drawable.nissin,"Nissin"));
+        addQuestion(new Question(R.drawable.delmonte,"Del Monte"));
+        addQuestion(new Question(R.drawable.bench,"Bench"));
+        addQuestion(new Question(R.drawable.penshoppe,"Penshoppe"));
     }
 
     public void addQuestion(Question question){
