@@ -11,11 +11,17 @@ public class QuestionManager {
     private List<Question> questionList;
     private List<Integer> answeredQuestionsList;
     private Random random1;
+    private int currentScore;
 
     public void initialize() {
         questionList = new ArrayList<>();
         answeredQuestionsList = new ArrayList<>();
         random1 = new Random();
+        currentScore = 0;
+        initializeQuestions();
+    }
+
+    public void initializeQuestions(){
         addQuestion(new Question(R.drawable.nike,"Nike"));
         addQuestion(new Question(R.drawable.adidas,"Adidas"));
         addQuestion(new Question(R.drawable.pepsi,"Pepsi"));
@@ -61,6 +67,7 @@ public class QuestionManager {
     }
 
     public int getQuestionNumber(){return answeredQuestionsList.size();}
+
     public int getTotalQuestions(){return questionList.size();}
 
     private Question getRandomQuestion() {
@@ -76,6 +83,7 @@ public class QuestionManager {
     }
 
     public void resetAnsweredQuestions(){
+        currentScore = 0;
         answeredQuestionsList.clear();
     }
 
@@ -97,7 +105,17 @@ public class QuestionManager {
         return finalAnswersList;
     }
 
+    public void answerQuestion(String answerText){
+        if(isAnswerCorrect(answerText)){
+            currentScore++;
+        }
+    }
+
     public boolean isAnswerCorrect(String answerText){
         return currentQuestion.getLogoAnswer().equals(answerText);
+    }
+
+    public int getCurrentScore() {
+        return currentScore;
     }
 }

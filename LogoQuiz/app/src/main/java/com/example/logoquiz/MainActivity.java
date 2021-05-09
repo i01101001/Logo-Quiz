@@ -12,8 +12,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         QuestionManager.instance.randomizeQuestion();
         displayQuestion(QuestionManager.instance.getCurrentQuestion());
         bindButtons();
+        updateScoreText();
     }
     private void displayQuestion(Question question){
         ImageView logoDisplay = findViewById(R.id.logoDisplay);
@@ -54,13 +53,20 @@ public class MainActivity extends AppCompatActivity {
         titleView.setText(titleText);
     }
     private void onButtonClick(Button button){
-        if(QuestionManager.instance.isAnswerCorrect(button.getText().toString())){
-            animateTitleText();
-            animateLogoDisplay();
+        String answer = button.getText().toString();
+        QuestionManager.instance.answerQuestion(answer);
+        if(QuestionManager.instance.isAnswerCorrect(answer)){
+            updateScoreText();
+            animateToNextQuestion();
             animatePopupText(" CORRECT ",true);
         } else{
+            animateToNextQuestion();
             animatePopupText(" WRONG ",false);
         }
+    }
+    private void updateScoreText(){
+        TextView scoreText = findViewById(R.id.scoreText);
+        scoreText.setText(String.format("%d/%d",QuestionManager.instance.getCurrentScore(),QuestionManager.instance.getTotalQuestions()));
     }
     private void bindButtons(){
         ImageView logoDisplay = findViewById(R.id.logoDisplay);
@@ -103,7 +109,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
+    private void animateToNextQuestion(){
+        animateTitleText();
+        animateDisplayAndButtons();
+    }
     public void animateTitleText() {
         TextView titleText = findViewById(R.id.titleView);
         Animator fadeOut = getFadeOutAnimator(titleText, 500, 0);
@@ -163,7 +172,7 @@ public class MainActivity extends AppCompatActivity {
         animatorSet.start();
     }
 
-    public void animateLogoDisplay() {
+    public void animateDisplayAndButtons() {
         ImageView logoDisplay = findViewById(R.id.logoDisplay);
         Animator fadeOut = getFadeOutAnimator(logoDisplay, 500, 0);
         Animator fadeIn = getFadeInAnimator(logoDisplay, 500, 500);
