@@ -64,26 +64,11 @@ public class MainActivity extends AppCompatActivity {
             animatePopupText(" WRONG ",false);
         }
     }
-    private void updateScoreText(){
-        TextView scoreText = findViewById(R.id.scoreText);
-        scoreText.setText(String.format("%d/%d",QuestionManager.instance.getCurrentScore(),QuestionManager.instance.getTotalQuestions()));
-    }
     private void bindButtons(){
-        ImageView logoDisplay = findViewById(R.id.logoDisplay);
         Button answer1 = findViewById(R.id.answer1);
         Button answer2 = findViewById(R.id.answer2);
         Button answer3 = findViewById(R.id.answer3);
         Button answer4 = findViewById(R.id.answer4);
-        logoDisplay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(QuestionManager.instance.getCurrentQuestion().getLogoAnswer().equals("")){
-                    QuestionManager.instance.resetAnsweredQuestions();
-                    QuestionManager.instance.randomizeQuestion();
-                    displayQuestion(QuestionManager.instance.getCurrentQuestion());
-                }
-            }
-        });
         answer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -109,6 +94,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+    private void updateScoreText(){
+        TextView scoreText = findViewById(R.id.scoreText);
+        scoreText.setText(String.format("Score: %d/%d",QuestionManager.instance.getCurrentScore(),QuestionManager.instance.getTotalQuestions()));
+    }
     private void animateToNextQuestion(){
         animateTitleText();
         animateDisplayAndButtons();
@@ -116,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
     public void animateTitleText() {
         TextView titleText = findViewById(R.id.titleView);
         Animator fadeOut = getFadeOutAnimator(titleText, 500, 0);
-        Animator fadeIn = getFadeInAnimator(titleText, 500, 500);
+        Animator fadeIn = getFadeInAnimator(titleText, 500, 0);
         fadeOut.addListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animation) {
@@ -160,7 +149,6 @@ public class MainActivity extends AppCompatActivity {
             }
             @Override
             public void onAnimationEnd(Animator animator) {
-
             }
             @Override
             public void onAnimationCancel(Animator animator) {
@@ -175,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
     public void animateDisplayAndButtons() {
         ImageView logoDisplay = findViewById(R.id.logoDisplay);
         Animator fadeOut = getFadeOutAnimator(logoDisplay, 500, 0);
-        Animator fadeIn = getFadeInAnimator(logoDisplay, 500, 500);
+        Animator fadeIn = getFadeInAnimator(logoDisplay, 500, 0);
         fadeOut.addListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animation) {
